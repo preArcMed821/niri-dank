@@ -1,29 +1,43 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # image will be published to ghcr.io/<user>/<name>
-name: niri-dank
+name: niri
 # description will be included in the image's metadata
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 42 # latest is also supported if you want new updates ASAP
+image-version: 43 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
-modules:
-  - type: files
-    files:
-      - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
   - type: dnf
     repos:
       copr:
         - atim/starship
+        - yalter/niri
+        - phoenixlzx/dank
+        - atim/emacs
     install:
       packages:
-        - micro
+      - niri
+      - dank-material-shell
+      - foot
+      - distrobox
+      - toolbox
+      - neovim
+      - emacs
+      - wl-clipboard
+      - swww
+      - grim
+      - slurp
+      - pavucontrol
+      - network‑manager‑applet
+      - git
+      - starship
+      - alacritty
+
         - starship
     remove:
       packages:
@@ -41,5 +55,14 @@ modules:
           - org.mozilla.firefox
           - org.gnome.Loupe
       - scope: user # Also add Flathub user repo, but no user packages
+  
+  - type: systemd
+    system:
+      enabled:
+        - niri-session.target
+    user:
+      enabled:
+        - niri-session.target
+
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
