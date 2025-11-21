@@ -22,21 +22,21 @@ modules:
     install:
       packages:
         - niri
-      - dank-material-shell
-      - foot
-      - distrobox
-      - toolbox
-      - neovim
-      - emacs
-      - wl-clipboard
-      - swww
-      - grim
-      - slurp
-      - pavucontrol
-      - network‑manager‑applet
-      - git
-      - starship
-      - alacritty
+        - dank-material-shell
+        - foot
+        - distrobox
+        - toolbox
+        - neovim
+        - emacs
+        - wl-clipboard
+        - swww
+        - grim
+        - slurp
+        - pavucontrol
+        - network‑manager‑applet
+        - git
+        - starship
+        - alacritty
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
