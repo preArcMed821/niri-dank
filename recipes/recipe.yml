@@ -64,7 +64,6 @@ modules:
     system:
       enabled:
         - tailscaled.service
-        - dms.service
   #  user:
   #    enabled:
   #      - niri-session.target
