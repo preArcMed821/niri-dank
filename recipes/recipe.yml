@@ -57,7 +57,7 @@ modules:
         install: # system flatpaks we want all users to have and not remove
           - org.mozilla.firefox
           - org.gnome.Loupe
-          - com.brave.browser
+          - com.brave.Browser
       - scope: user # Also add Flathub user repo, but no user packages
 
   - type: systemd
