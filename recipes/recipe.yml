@@ -17,23 +17,23 @@ modules:
       copr:
         - atim/starship
         - yalter/niri
-        - phoenixlzx/dank
-        - atim/emacs
+        - avengemedia/dms
+        #- materka/swww
     install:
       packages:
         - niri
-        - dank-material-shell
+        - dms
         - foot
         - distrobox
         - toolbox
         - neovim
         - emacs
         - wl-clipboard
-        - swww
+        #- swww
         - grim
         - slurp
         - pavucontrol
-        - network‑manager‑applet
+        #- netwuork‑maager‑applet
         - git
         - starship
         - alacritty
@@ -54,12 +54,12 @@ modules:
           - org.gnome.Loupe
       - scope: user # Also add Flathub user repo, but no user packages
 
-  - type: systemd
-    system:
-      enabled:
-        - niri-session.target
-    user:
-      enabled:
-        - niri-session.target
+  #- type: systemd
+  #  system:
+  #    enabled:
+  #      - niri-session.target
+  #  user:
+  #    enabled:
+  #      - niri-session.target
         
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
