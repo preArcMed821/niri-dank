@@ -14,6 +14,8 @@ image-version: 43 # latest is also supported if you want new updates ASAP
 modules:
   - type: dnf
     repos:
+      files:
+        - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
       copr:
         - atim/starship
         - yalter/niri
@@ -37,6 +39,9 @@ modules:
         - git
         - starship
         - alacritty
+        - zsh
+        - tailscale
+        - rofi-wayland
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -52,12 +57,13 @@ modules:
         install: # system flatpaks we want all users to have and not remove
           - org.mozilla.firefox
           - org.gnome.Loupe
+          - com.brave.browser
       - scope: user # Also add Flathub user repo, but no user packages
 
-  #- type: systemd
-  #  system:
-  #    enabled:
-  #      - niri-session.target
+  - type: systemd
+    system:
+      enabled:
+        - tailscaled.service
   #  user:
   #    enabled:
   #      - niri-session.target
