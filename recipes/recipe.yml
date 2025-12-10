@@ -21,8 +21,14 @@ modules:
         - yalter/niri
         - avengemedia/dms
         #- materka/swww
+    remove:
+      packages:
+        - bluefin-logos
+        - bluefin-plymouth
     install:
       packages:
+        - fedora-logos
+        - plymouth-system-theme
         - niri
         - dms
         - foot
