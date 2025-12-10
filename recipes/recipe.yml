@@ -21,13 +21,6 @@ modules:
         - yalter/niri
         - avengemedia/dms
         #- materka/swww
-    replace:
-      - from-repo: fedora
-        packages:
-          - old: bluefin-logos
-            new: fedora-logos
-          - old: bluefin-plymouth
-            new: plymouth-system-theme
     install:
       packages:
         - niri
