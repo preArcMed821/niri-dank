@@ -62,10 +62,10 @@ modules:
           - com.brave.Browser
       - scope: user # Also add Flathub user repo, but no user packages
 
-  # - type: systemd
-  #   system:
-  #     enabled:
-  #       - tailscaled.service
+  - type: systemd
+    system:
+      enabled:
+        - keyd.service
   #  user:
   #    enabled:
   #      - niri-session.target
