@@ -6,16 +6,16 @@ name: niri-dank
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 43 # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/bluefin-dx
+image-version: stable # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
   - type: dnf
-    repos:
-      files:
-        - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+    # repos:
+      # files:
+      #   - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
       copr:
         - atim/starship
         - yalter/niri
@@ -38,7 +38,7 @@ modules:
         #- netwuork‑maager‑applet
         - git
         - starship
-        - alacritty
+        - kitty
         - zsh
         - tailscale
         - rofi-wayland
@@ -60,10 +60,10 @@ modules:
           - com.brave.Browser
       - scope: user # Also add Flathub user repo, but no user packages
 
-  - type: systemd
-    system:
-      enabled:
-        - tailscaled.service
+  # - type: systemd
+  #   system:
+  #     enabled:
+  #       - tailscaled.service
   #  user:
   #    enabled:
   #      - niri-session.target
