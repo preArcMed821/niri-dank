@@ -20,6 +20,7 @@ modules:
         - atim/starship
         - yalter/niri
         - avengemedia/dms
+        - alternateved/keyd
         #- materka/swww
     install:
       packages:
@@ -40,8 +41,9 @@ modules:
         - starship
         - kitty
         - zsh
-        - tailscale
-        - rofi-wayland
+        # - tailscale
+        # - rofi-wayland
+        - keyd
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
