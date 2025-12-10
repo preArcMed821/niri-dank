@@ -13,14 +13,14 @@ image-version: stable # latest is also supported if you want new updates ASAP
 # you can include multiple instances of the same module
 modules:
   - type: dnf
-    # repos:
+    repos:
       # files:
       #   - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
-    copr:
-      - atim/starship
-      - yalter/niri
-      - avengemedia/dms
-      #- materka/swww
+      copr:
+        - atim/starship
+        - yalter/niri
+        - avengemedia/dms
+        #- materka/swww
     install:
       packages:
         - niri
