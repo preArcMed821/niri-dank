@@ -22,7 +22,8 @@ modules:
         - avengemedia/dms
         #- materka/swww
     replace:
-      - packages:
+      - from-repo: fedora
+        packages:
           - old: bluefin-logos
             new: fedora-logos
           - old: bluefin-plymouth
