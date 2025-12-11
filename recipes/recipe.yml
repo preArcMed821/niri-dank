@@ -30,8 +30,8 @@ modules:
         - neovim
         - emacs
         - wl-clipboard
-        - grim
-        - slurp
+        #- grim
+        #- slurp
         - pavucontrol
         - git
         - starship
@@ -39,6 +39,8 @@ modules:
         - zsh
         # - tailscale
         - keyd
+        - yubikey-manager
+        - yubikey-manager-qt
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -54,7 +56,7 @@ modules:
         install: # system flatpaks we want all users to have and not remove
           - org.mozilla.firefox
           - org.gnome.Loupe
-          - com.brave.Browser
+          # - com.brave.Browser
       - scope: user # Also add Flathub user repo, but no user packages
 
   - type: systemd
