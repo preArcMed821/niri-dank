@@ -21,28 +21,23 @@ modules:
         - yalter/niri
         - avengemedia/dms
         - alternateved/keyd
-        #- materka/swww
     install:
       packages:
         - niri
         - dms
-        - foot
         - distrobox
         - toolbox
         - neovim
         - emacs
         - wl-clipboard
-        #- swww
         - grim
         - slurp
         - pavucontrol
-        #- netwuork‑maager‑applet
         - git
         - starship
         - kitty
         - zsh
         # - tailscale
-        # - rofi-wayland
         - keyd
     remove:
       packages:
