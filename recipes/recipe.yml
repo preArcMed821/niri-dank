@@ -37,6 +37,37 @@ modules:
         - yubikey-manager-qt
         - chsh
         - gnupg2-scdaemon
+
+        # Cockpit
+        - cockpit-bridge
+        - cockpit-machines
+        - cockpit-networkmanager
+        - cockpit-ostree
+        - cockpit-podman
+        - cockpit-selinux
+        - cockpit-storaged
+        - cockpit-system
+
+        # Containers
+        - podman-compose
+        - podman-machine
+        - podman-tui
+
+        # Virtual Machine
+        - libvirt
+        - libvirt-nss
+        - virt-manager
+        - virt-v2v
+        - virt-viewer
+        - qemu
+        - qemu-char-spice
+        - qemu-device-display-virtio-gpu
+        - qemu-device-display-virtio-vga
+        - qemu-device-usb-redirect
+        - qemu-img
+        - qemu-system-x86-core
+        - qemu-user-binfmt
+        - qemu-user-static
     remove:
       packages:
         - firefox
@@ -65,6 +96,7 @@ modules:
       enabled:
         - keyd.service
         - tailscaled.service
+        - libvirtd.service
   #  user:
   #    enabled:
   #      - niri-session.target
