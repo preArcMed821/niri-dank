@@ -76,6 +76,13 @@ modules:
         - firefox
         - firefox-langpacks
 
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - Hack
+        - FiraCode
+        - JetBrainsMono
+
   - type: default-flatpaks
     configurations:
       - notify: false
