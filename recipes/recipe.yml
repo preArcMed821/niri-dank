@@ -51,9 +51,14 @@ modules:
           - org.gnome.Loupe
       - scope: user # Also add Flathub user repo, but no user packages
 
-  - type: script
-    scripts:
-      - brew.sh
+  - type: brew
+    nofile-limits: true
+    brew-analytics: false
+  
+  - type: files
+    files:
+      - source: system
+        destination: /
 
   - type: systemd
     system:
