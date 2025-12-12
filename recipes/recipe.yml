@@ -12,6 +12,7 @@ modules:
     repos:
       files:
         - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+        - https://repository.mullvad.net/rpm/stable/mullvad.repo
       copr:
         - atim/starship
         - yalter/niri
@@ -19,6 +20,7 @@ modules:
         - alternateved/keyd
     install:
       packages:
+        # General
         - niri
         - dms
         - distrobox
@@ -37,6 +39,7 @@ modules:
         - yubikey-manager-qt
         - chsh
         - gnupg2-scdaemon
+        - mullvad-vpn
 
         # Cockpit
         - cockpit-bridge
@@ -97,6 +100,8 @@ modules:
         - keyd.service
         - tailscaled.service
         - libvirtd.service
+        - mullvad-daemon.service
+        - mullvad-early-boot-blocking
   #  user:
   #    enabled:
   #      - niri-session.target
