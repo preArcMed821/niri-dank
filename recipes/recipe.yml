@@ -1,21 +1,17 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# image will be published to ghcr.io/<user>/<name>
 name: niri-dank
-# description will be included in the image's metadata
-description: This is my personal OS image.
+description: Fedora Atomic with Niri + Dank Linux Shell
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/bluefin-dx
-image-version: stable # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/silverblue-main
+image-version: 43 # latest is also supported if you want new updates ASAP
 
-# module configuration, executed in order
-# you can include multiple instances of the same module
 modules:
   - type: dnf
     repos:
-      # files:
-      #   - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+      files:
+        - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
       copr:
         - atim/starship
         - yalter/niri
@@ -30,40 +26,36 @@ modules:
         - neovim
         - emacs
         - wl-clipboard
-        #- grim
-        #- slurp
         - pavucontrol
         - git
         - starship
         - kitty
         - zsh
-        # - tailscale
-        - keyd
+        - tailscale
+        - keyd   # Used to map Capslock to Hyperkey (Ctrl+Alt+Shift+Meta)
         - yubikey-manager
         - yubikey-manager-qt
+        - chsh
         - gnupg2-scdaemon
     remove:
       packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+        - firefox-langpacks
 
   - type: default-flatpaks
     configurations:
-      - notify: true # Send notification after install/uninstall is finished (true/false)
+      - notify: false
         scope: system
-        # If no repo information is specified, Flathub will be used by default
-        install: # system flatpaks we want all users to have and not remove
+        install:
           - org.mozilla.firefox
           - org.gnome.Loupe
-          # - com.brave.Browser
       - scope: user # Also add Flathub user repo, but no user packages
 
   - type: systemd
     system:
       enabled:
         - keyd.service
+        - tailscale.service
   #  user:
   #    enabled:
   #      - niri-session.target
