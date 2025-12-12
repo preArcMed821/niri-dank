@@ -55,7 +55,7 @@ modules:
     system:
       enabled:
         - keyd.service
-        - tailscale.service
+        - tailscaled.service
   #  user:
   #    enabled:
   #      - niri-session.target
