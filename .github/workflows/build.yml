@@ -28,7 +28,7 @@ jobs:
         recipe:
           # !! Add your recipes here
           - recipe-silverblue.yml
-          - recipe-secureblue.yml
+          # - recipe-secureblue.yml   ## Currently bases Fedora 41, not Fedora 43 and fails to build
     steps:
       # the build is fully handled by the reusable github action
       - name: Build Custom Image
