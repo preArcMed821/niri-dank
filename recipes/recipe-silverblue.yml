@@ -1,0 +1,116 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: niri-dank-silverblue
+description: Fedora Atomic with Niri + Dank Linux Shell
+
+# the base image to build on top of (FROM) and the version tag to use
+base-image: ghcr.io/ublue-os/silverblue-main
+image-version: 43 # latest is also supported if you want new updates ASAP
+
+modules:
+  - type: dnf
+    repos:
+      files:
+        - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+        - https://repository.mullvad.net/rpm/stable/mullvad.repo
+      copr:
+        - atim/starship
+        - yalter/niri
+        - avengemedia/dms
+        - alternateved/keyd
+    install:
+      packages:
+        # General
+        - niri
+        - dms
+        - distrobox
+        - toolbox
+        - neovim
+        - emacs
+        - wl-clipboard
+        - pavucontrol
+        - git
+        - starship
+        - kitty
+        - zsh
+        - tailscale
+        - keyd   # Used to map Capslock to Hyperkey (Ctrl+Alt+Shift+Meta)
+        - yubikey-manager
+        - yubikey-manager-qt
+        - chsh
+        - gnupg2-scdaemon
+        - mullvad-vpn
+
+        # Cockpit
+        - cockpit-bridge
+        - cockpit-machines
+        - cockpit-networkmanager
+        - cockpit-ostree
+        - cockpit-podman
+        - cockpit-selinux
+        - cockpit-storaged
+        - cockpit-system
+
+        # Containers
+        - podman-compose
+        - podman-machine
+        - podman-tui
+
+        # Virtual Machine
+        - libvirt
+        - libvirt-nss
+        - virt-manager
+        - virt-v2v
+        - virt-viewer
+        - qemu
+        - qemu-char-spice
+        - qemu-device-display-virtio-gpu
+        - qemu-device-display-virtio-vga
+        - qemu-device-usb-redirect
+        - qemu-img
+        - qemu-system-x86-core
+        - qemu-user-binfmt
+        - qemu-user-static
+    remove:
+      packages:
+        - firefox
+        - firefox-langpacks
+
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - Hack
+        - FiraCode
+        - JetBrainsMono
+
+  - type: default-flatpaks
+    configurations:
+      - notify: false
+        scope: system
+        install:
+          - org.mozilla.firefox
+          - org.gnome.Loupe
+      - scope: user # Also add Flathub user repo, but no user packages
+
+  - type: brew
+    nofile-limits: true
+    brew-analytics: false
+  
+  - type: files
+    files:
+      - source: system
+        destination: /
+
+  - type: systemd
+    system:
+      enabled:
+        - keyd.service
+        - tailscaled.service
+        - libvirtd.service
+        - mullvad-daemon.service
+        - mullvad-early-boot-blocking
+  #  user:
+  #    enabled:
+  #      - niri-session.target
+        
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
