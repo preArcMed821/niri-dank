@@ -7,6 +7,9 @@ description: Fedora Atomic with Niri + Dank Linux Shell
 base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 43 # latest is also supported if you want new updates ASAP
 
+scripts:
+  - scripts/brew.sh   # or whatever your script path is
+
 modules:
   - type: dnf
     repos:
